@@ -1,0 +1,21 @@
+# Project Summary
+
+# Use Tree Lat Lons from SF Data.org
+# Use Geojson data of SF districts
+
+# Need to create database to store tree locations and districts they reside in
+####     Tree sci name
+####     Tree common name
+####     Location
+####     District
+####     Population
+
+# Need to verify if a set of lat and lon coordinates land with-in a poly of lat/lon points
+###  Use Shapely to verify if a point intersects a poly of coordinates
+
+# Need SVG map of San Francisco
+
+**** MVP *****
+# User interactive map to parse through Tree data
+
+# Display data in Chart
