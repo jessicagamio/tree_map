@@ -16,7 +16,7 @@ def connect_to_db(app,dbname='tree_map'):
 
 # user clicks on district
     # get all tree types existing in district
-    # can calculate from db how many trees of each type exist
+    # can calculate from db how many trees of each type exist within the district for D3 bubble size
 
 # clicks on tree types 
     # get all districts where tree grows
@@ -63,7 +63,7 @@ class Districts(db.Model):
     district_name=db.Column(db.String,nullable=False)
     coord = db.Column(db.Float, nullable=False)
 
-    
+    district=db.relationship('TreeSpecies', backref='tree_species')
 
 if __name__=="__main__":
     from server import app
