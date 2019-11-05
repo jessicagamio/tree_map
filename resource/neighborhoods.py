@@ -16,9 +16,10 @@ districts_data = json.loads(districts)
 
 
 district_name = districts_data['features'][0]['properties']['name']
-district_coordinates = districts_data['features'][0]['geometry']['coordinates'][0][0]
+coord = districts_data['features'][0]['geometry']['coordinates'][0][0]
 
 
 # allows you to view the districts of SF
-for i,district in enumerate(districts_data['features']):
-    pprint(districts_data['features'][i]['properties']['name'])
+# for i,district in enumerate(districts_data['features']):
+#     pprint(districts_data['features'][i]['properties']['name'])
+#     pprint(districts_data['features'][0]['geometry']['coordinates'][0][0])
