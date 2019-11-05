@@ -50,7 +50,7 @@ class Locations(db.Model):
     lat = db.Column(db.Float, nullable=False)
     lon = db.Column(db.Float, nullable=False)
 
-    tree_point=db.relationship('TreeSpecies', backref='tree_species')
+    tree_species=db.relationship('TreeSpecies', backref='tree_species')
 
 class Districts(db.Model):
     """SF districts"""
@@ -63,7 +63,8 @@ class Districts(db.Model):
     district_name=db.Column(db.String,nullable=False)
     coord = db.Column(db.Float, nullable=False)
 
-    district=db.relationship('TreeSpecies', backref='tree_species')
+    tree_species=db.relationship('TreeSpecies', secondary = "location", backref='tree_species')
+
 
 if __name__=="__main__":
     from server import app
