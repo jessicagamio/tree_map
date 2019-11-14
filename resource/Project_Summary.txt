@@ -13,6 +13,11 @@
 # Need to verify if a set of lat and lon coordinates land with-in a poly of lat/lon points
 ###  Use Shapely to verify if a point intersects a poly of coordinates
 
+https://gis.stackexchange.com/questions/84114/shapely-unable-to-tell-if-polygon-contains-point
+
+https://shapely.readthedocs.io/en/latest/manual.html#predicates-and-relationships
+
+
 # Need SVG map of San Francisco
 
 **** MVP *****

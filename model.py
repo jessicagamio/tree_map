@@ -24,6 +24,7 @@ def connect_to_db(app,dbname):
     # get all districts where tree grows
     # shows how many trees of those types on record
     # display map with trees in districts
+    ## trees=db.session.query(TreeSpecies).join(Locations).join(Districts).filter(Districts.district_name=='Nob Hill').all()
 
 class TreeSpecies(db.Model):
     """SF Trees"""
