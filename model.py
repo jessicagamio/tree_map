@@ -1,16 +1,18 @@
 from flask_sqlalchemy import SQLAlchemy 
 
-def connect_to_db(app,dbname='tree_map'):
+db =SQLAlchemy()
+
+def connect_to_db(app,dbname):
     """connect to database"""
     
-    db.config['SQLALCHEMY_DATABASE_URI']=f'postgres:///{dbname}'
-    db.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False 
-    db.config['SQLALCHEMY_ECHO'] = True
+    app.config['SQLALCHEMY_DATABASE_URI']=f"postgres:///{dbname}"
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False 
+    app.config['SQLALCHEMY_ECHO'] = True
 
     # connnect database to app in server
     db.app = app
     db.init_app(app)
-    db.connect_all()
+
 
 
 
@@ -30,9 +32,11 @@ class TreeSpecies(db.Model):
 
     tree_species_id = db.Column(db.Integer,
                         primary_key=True,
-                        autoincremint = True)
+                        autoincrement = True)
     sci_name = db.Column(db.String, nullable = False)
     common_name = db.Column(db.String, nullable = False)
+
+    locations=db.relationship('Locations')
 
 
 class Locations(db.Model):
@@ -42,30 +46,45 @@ class Locations(db.Model):
 
     locate_id= db.Column(db.Integer,
                             primary_key=True,
-                            autoincriment=True)
+                            autoincrement=True)
     district_id = db.Column(db.Integer,
-                            db.ForeignKey('district.district_id'))
+                            db.ForeignKey('districts.district_id'))
     tree_species_id = db.Column(db.Integer,
                             db.ForeignKey('tree_species.tree_species_id'))
     lat = db.Column(db.Float, nullable=False)
     lon = db.Column(db.Float, nullable=False)
 
-    tree_species=db.relationship('TreeSpecies', backref='tree_species')
+    tree_species=db.relationship('TreeSpecies')
+    districts=db.relationship('Districts')
+
 
 class Districts(db.Model):
     """SF districts"""
 
-    __tablename__="district"
+    __tablename__="districts"
 
     district_id = db.Column(db.Integer,
                     primary_key=True,
-                    autoincriment=True)
+                    autoincrement=True)
     district_name=db.Column(db.String,nullable=False)
-    coord = db.Column(db.Float, nullable=False)
+    coord = db.Column(db.ARRAY(db.Float(precision=None,asdecimal=True), dimensions=1), nullable=False)
 
-    tree_species=db.relationship('TreeSpecies', secondary = "location", backref='tree_species')
+    tree_species=db.relationship('TreeSpecies', secondary = "location", backref='districts')
+
+
+magnolia = TreeSpecies(sci_name='magnolia grandiflora', common_name='Magnolia')
+magdistrict=Districts(district_name='Nob Hill', coord=[1.2,1.4,1.4,1.5])
+magnolia_loc = Locations(lat=1.2, lon= 1.5, tree_species=magnolia, districts=magdistrict)
+
 
 
 if __name__=="__main__":
     from server import app
-    connect_to_db(app)
+    connect_to_db(app, 'map')
+    db.create_all()
+
+    db.session.add(magnolia)
+    db.session.add(magdistrict)
+    db.session.add(magnolia_loc)
+    db.session.commit()
+
