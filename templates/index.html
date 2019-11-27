@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+
     <title>Tree Map</title>
 </head>
 <body>
+
+
+<div id='map' style='width: 800px; height: 700px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiamVzc2ljYWdhbWlvIiwiYSI6ImNrMzEyeHAzbjA0dW0zbW45c2prZG0zdjcifQ.JKkalrLOqF572jsJ5o5Sfg';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/jessicagamio/ck3gl7szo07y31cl36lvdh91x'
+});
+</script>
 
 </body>
 </html>
