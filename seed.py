@@ -69,7 +69,6 @@ while (i<entries):
 
     # find district tree species is located in
     districtIn = findDistrict(float(latitude), float(longitude))
-    db.session.add(districtIn)
 
     # record tree Locations
     tree_loc = Locations(lat =float(latitude), lon = float(longitude), tree_species = tree_type, districts = districtIn)
