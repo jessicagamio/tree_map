@@ -68,10 +68,13 @@ while (i<entries):
     db.session.add(tree_type)
 
     # find district tree species is located in
-    districtIn = findDistrict(float(latitude), float(longitude))
+    districtName = findDistrict(float(latitude), float(longitude))
+
+    # fetch district from Districts class before passing to relationship
+    districtIn = db.session.query(Districts).filter_by(district_name=districtName).first()
 
     # record tree Locations
-    tree_loc = Locations(lat =float(latitude), lon = float(longitude), tree_species = tree_type, districts = districtIn)
+    tree_loc = Locations(lat= float(latitude), lon= float(longitude), tree_species= tree_type, districts= districtIn)
     db.session.add(tree_loc)
 
     db.session.commit()
