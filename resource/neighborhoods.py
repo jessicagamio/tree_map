@@ -22,4 +22,4 @@ coord = districts_data['features'][0]['geometry']['coordinates'][0][0]
 #allows you to view the districts of SF
 for i,district in enumerate(districts_data['features']):
     pprint(districts_data['features'][i]['properties']['name'])
-    pprint(districts_data['features'][0]['geometry']['coordinates'][0][0])
+    pprint(districts_data['features'][i]['geometry']['coordinates'][0][0])
