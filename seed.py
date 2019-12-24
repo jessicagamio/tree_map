@@ -14,7 +14,7 @@ def findDistrict(lat,lon):
     with open('resource/SF_Find_Neighborhoods.geojson') as f:
         js = json.load(f)
 
-    point=Point(lon,lat)#outer sunset
+    point=Point(lon,lat)
 
     for feature in js['features']:
         polygon = shape(feature['geometry'])
@@ -68,11 +68,11 @@ while (i<entries):
     db.session.add(tree_type)
 
     # find district tree species is located in
-    districtIn = findDistrict(latitude, longitude)
+    districtIn = findDistrict(float(latitude), float(longitude))
     db.session.add(districtIn)
 
     # record tree Locations
-    tree_loc = Locations(lat =latitude, lon = longitude, tree_species = tree_type, districts = districtIn)
+    tree_loc = Locations(lat =float(latitude), lon = float(longitude), tree_species = tree_type, districts = districtIn)
     db.session.add(tree_loc)
 
     db.session.commit()
