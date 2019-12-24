@@ -73,9 +73,9 @@ class Districts(db.Model):
     tree_species=db.relationship('TreeSpecies', secondary = "location", backref='districts')
 
 
-magnolia = TreeSpecies(sci_name='magnolia grandiflora', common_name='Magnolia')
-magdistrict=Districts(district_name='Nob Hill', coord=[1.2,1.4,1.4,1.5])
-magnolia_loc = Locations(lat=1.2, lon= 1.5, tree_species=magnolia, districts=magdistrict)
+# magnolia = TreeSpecies(sci_name='magnolia grandiflora', common_name='Magnolia')
+# magdistrict=Districts(district_name='Nob Hill', coord=[1.2,1.4,1.4,1.5])
+# magnolia_loc = Locations(lat=1.2, lon= 1.5, tree_species=magnolia, districts=magdistrict)
 
 
 
@@ -84,8 +84,8 @@ if __name__=="__main__":
     connect_to_db(app, 'map')
     db.create_all()
 
-    db.session.add(magnolia)
-    db.session.add(magdistrict)
-    db.session.add(magnolia_loc)
-    db.session.commit()
+    # db.session.add(magnolia)
+    # db.session.add(magdistrict)
+    # db.session.add(magnolia_loc)
+    # db.session.commit()
 
