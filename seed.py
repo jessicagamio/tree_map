@@ -82,19 +82,20 @@ while (i<entries):
         # find district tree species is located in
         districtName = findDistrict(float(latitude), float(longitude))
 
-   
-        print('------district info-------->',districtName)
+        if districtName:
+       
+            print('------district info-------->',districtName)
 
-        # fetch district from Districts class before passing to relationship
-        districtIn = district_dict[districtName]
+            # fetch district from Districts class before passing to relationship
+            districtIn = district_dict[districtName]
 
-        print('----name----->',districtIn)
+            print('----name----->',districtIn)
 
-        # record tree Locations
-        tree_loc = Locations(lat= float(latitude), lon= float(longitude), tree_species= tree_type, districts= districtIn)
-        db.session.add(tree_loc)
+            # record tree Locations
+            tree_loc = Locations(lat= float(latitude), lon= float(longitude), tree_species= tree_type, districts= districtIn)
+            db.session.add(tree_loc)
 
-        db.session.commit()
+            db.session.commit()
 
     i+=1
 
