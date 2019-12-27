@@ -68,16 +68,14 @@ class Districts(db.Model):
                     primary_key=True,
                     autoincrement=True)
     district_name=db.Column(db.String,nullable=False)
-    coord = db.Column(db.ARRAY(db.Float(precision=None,asdecimal=True), dimensions=1), nullable=False)
-
+    # coord = db.Column(db.ARRAY(db.Float(precision=None,asdecimal=True), dimensions=1), nullable=False)
+    coord = db.Column(db.ARRAY(db.Float(precision=None,asdecimal=True), dimensions=2), nullable=False)
     tree_species=db.relationship('TreeSpecies', secondary = "location", backref='districts')
 
 
 # magnolia = TreeSpecies(sci_name='magnolia grandiflora', common_name='Magnolia')
 # magdistrict=Districts(district_name='Nob Hill', coord=[1.2,1.4,1.4,1.5])
 # magnolia_loc = Locations(lat=1.2, lon= 1.5, tree_species=magnolia, districts=magdistrict)
-
-
 
 if __name__=="__main__":
     from server import app
