@@ -64,8 +64,9 @@ while (i<entries):
 
     if latitude == None or longitude==None:
         pass
+
     
-    elif tree_type == 'Tree(s) ::':
+    elif tree_type == 'Tree(s) ::' or tree_type == None or tree_type == '':
         pass
 
     else:
