@@ -11,7 +11,6 @@ if __name__ == "__main__":
 
 def findDistrict(lat,lon):
     """returns district the point/tree belongs to"""
-    # district = ''
 
     with open('resource/SF_Find_Neighborhoods.geojson') as f:
         js = json.load(f)
@@ -53,7 +52,6 @@ tree_data_json = open(tree_data).read()
 street_trees = json.loads(tree_data_json)
 entries = street_trees['data'].__len__()
 
-print('*********number of entries*******', entries)
 
 # iterated through all json file and record tree names and location coordinates
 while (i<entries):
@@ -83,13 +81,9 @@ while (i<entries):
         districtName = findDistrict(float(latitude), float(longitude))
 
         if districtName:
-       
-            print('------district info-------->',districtName)
 
             # fetch district from Districts class before passing to relationship
             districtIn = district_dict[districtName]
-
-            print('----name----->',districtIn)
 
             # record tree Locations
             tree_loc = Locations(lat= float(latitude), lon= float(longitude), tree_species= tree_type, districts= districtIn)
