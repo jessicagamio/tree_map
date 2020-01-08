@@ -8,9 +8,35 @@
     <title>Tree Map</title>
 </head>
 <body>
+    <div id="chart"></div>
+    <div>Create a Tree</div>
+    <div>
+        <form>
+            <div>
+                <span class="search">
+                    <select name ="Districts">
+                        {% for district in districts%}
+                            <option value={{district}}> {{district} </option>
+                            {% endfor %}
+                    </select>
+                </span>
+                <span class="search"></span>
+                <span class="search">
+                    <select name ="TreeSpecies">
+                        {% for tree in treespecies%}
+                            <option value={{tree}}> {{tree}} </option>
+                            {% endfor %}
+                    </select>
+                </span>
+            </div>
+            <div>
+                <input type="submit" value="Plant">
+            </div>
+        </form>
+    </div>
 
 
-    <div id='map' style='width: 800px; height: 700px;'></div>
+    <!-- <div id='map' style='width: 800px; height: 700px;'></div>
 
     <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiamVzc2ljYWdhbWlvIiwiYSI6ImNrMzEyeHAzbjA0dW0zbW45c2prZG0zdjcifQ.JKkalrLOqF572jsJ5o5Sfg';
@@ -31,7 +57,7 @@
             },
             'layout': {},
             'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
+            'fill-color': 'rgba(200, 50, 240, 0.4)',
             'fill-opacity': 0.8,
             'fill-outline-color': 'rgba(200, 100, 240, 1)'
             }
@@ -57,13 +83,7 @@
     });
 
     </script>
-
-
-
-<div>
-    Get Trees
-
-</div>
+ -->
 
 </body>
 </html>
