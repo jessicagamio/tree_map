@@ -55,6 +55,24 @@ def index():
     return render_template('index.html', neighborhoods = neighborhoods, treespecies=tree_list)
     
 
+@app.route("/result")
+def statistics():
+    """ query tree stats to display on page"""
+
+    region = request.args.get("Districts")
+    tree = request.args.get("TreeSpecies")
+
+    if region == "All Districts":
+
+    if tree == "All Types":
+
+
+    else:
+        #Query in database
+        # for Districts in region query number of trees of specified treespecies
+        # return answer in the form of a list of tuples (district/tree, number)
+    return answer
+
 
 
 
